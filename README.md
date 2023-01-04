@@ -51,7 +51,7 @@ Result:
 
 ### Create image
 
-`mctl action 'openai:image(n:1,prompt:"real martian")'`
+`mctl action 'openai:image(prompt:"real martian")'`
 
 ```
 Result:
@@ -59,9 +59,6 @@ Result:
   {
     "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-axt0lBVwbIkPQaaB9sZUFdv7/user-ZOh1OVZ0EmR0PozpSWPBD5rQ/img-MnHioaTxosecDF2F2SylWI6e.png?st=2023-01-04T02%3A51%3A49Z&se=2023-01-04T04%3A51%3A49Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-01-03T23%3A25%3A38Z&ske=2023-01-04T23%3A25%3A38Z&sks=b&skv=2021-08-06&sig=2L6qXg95yKUrm/Z0p%2B7TjynxW4qN9k5wrZMOt0/AO34%3D"
   },
-  {
-    "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-axt0lBVwbIkPQaaB9sZUFdv7/user-ZOh1OVZ0EmR0PozpSWPBD5rQ/img-Zcs6ADyFGSo1CTe9Qp2kAnbH.png?st=2023-01-04T02%3A51%3A49Z&se=2023-01-04T04%3A51%3A49Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-01-03T23%3A25%3A38Z&ske=2023-01-04T23%3A25%3A38Z&sks=b&skv=2021-08-06&sig=keDxTR1ughhfnUM5kE47gm7QstTa1b8agx1gMB/PHpw%3D"
-  }
   ...
 ]
 ```
