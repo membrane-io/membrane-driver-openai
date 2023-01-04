@@ -1,4 +1,4 @@
-# Hacker News Driver
+# OpenAI Driver
 
 This [driver](https://membrane.io) lets you interact with OpenAI through your Membrane graph.
 
