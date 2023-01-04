@@ -1,0 +1,193 @@
+{
+  "dependencies": {
+    "http": "http:"
+  },
+  "schema": {
+    "types": [
+      {
+        "name": "Root",
+        "fields": [
+          {
+            "name": "status",
+            "type": "String"
+          },
+          {
+            "name": "models",
+            "type": "ModelsCollection"
+          }
+        ],
+        "actions": [
+          {
+            "name": "configure",
+            "type": "Void",
+            "params": [
+              {
+                "name": "token",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "completion",
+            "type": "String",
+            "params": [
+              {
+                "name": "prompt",
+                "type": "String"
+              },
+              {
+                "name": "model",
+                "type": "String"
+              },
+              {
+                "name": "max_tokens",
+                "type": "Int"
+              },
+              {
+                "name": "temperature",
+                "type": "Float"
+              }
+            ]
+          },
+          {
+            "name": "edit",
+            "type": "String",
+            "params": [
+              {
+                "name": "input",
+                "type": "String"
+              },
+              {
+                "name": "model",
+                "type": "String"
+              },
+              {
+                "name": "instruction",
+                "type": "String"
+              },
+              {
+                "name": "temperature",
+                "type": "Float"
+              }
+            ]
+          },
+          {
+            "name": "image",
+            "type": "List",
+            "ofType": "Image",
+            "params": [
+              {
+                "name": "prompt",
+                "type": "String"
+              },
+              {
+                "name": "n",
+                "type": "Int"
+              },
+              {
+                "name": "size",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "moderation",
+            "type": "Moderation",
+            "params": [
+              {
+                "name": "input",
+                "type": "String"
+              },
+              {
+                "name": "model",
+                "type": "String"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "ModelsCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "Model",
+            "params": [
+              {
+                "name": "id",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "page",
+            "type": "List",
+            "ofType": "Model"
+          }
+        ]
+      },
+      {
+        "name": "Model",
+        "fields": [
+          {
+            "name": "id",
+            "type": "String"
+          },
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "owned_by",
+            "type": "String",
+            "hints": {
+              "primary": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "Image",
+        "fields": [
+          {
+            "name": "url",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "Moderation",
+        "fields": [
+          {
+            "name": "violence/graphic",
+            "type": "Boolean"
+          },
+          {
+            "name": "violence",
+            "type": "Boolean"
+          },
+          {
+            "name": "sexual/minors",
+            "type": "Boolean"
+          },
+          {
+            "name": "sexual",
+            "type": "Boolean"
+          },
+          {
+            "name": "self-harm",
+            "type": "Boolean"
+          },
+          {
+            "name": "hate/threatening",
+            "type": "Boolean"
+          },
+          {
+            "name": "hate",
+            "type": "Boolean"
+          }
+        ]
+      }
+    ]
+  }
+}
