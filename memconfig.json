@@ -26,83 +26,6 @@
                 "type": "String"
               }
             ]
-          },
-          {
-            "name": "completion",
-            "type": "String",
-            "params": [
-              {
-                "name": "prompt",
-                "type": "String"
-              },
-              {
-                "name": "model",
-                "type": "String"
-              },
-              {
-                "name": "max_tokens",
-                "type": "Int"
-              },
-              {
-                "name": "temperature",
-                "type": "Float"
-              }
-            ]
-          },
-          {
-            "name": "edit",
-            "type": "String",
-            "params": [
-              {
-                "name": "input",
-                "type": "String"
-              },
-              {
-                "name": "model",
-                "type": "String"
-              },
-              {
-                "name": "instruction",
-                "type": "String"
-              },
-              {
-                "name": "temperature",
-                "type": "Float"
-              }
-            ]
-          },
-          {
-            "name": "image",
-            "type": "List",
-            "ofType": "Image",
-            "params": [
-              {
-                "name": "prompt",
-                "type": "String"
-              },
-              {
-                "name": "n",
-                "type": "Int"
-              },
-              {
-                "name": "size",
-                "type": "String"
-              }
-            ]
-          },
-          {
-            "name": "moderation",
-            "type": "Moderation",
-            "params": [
-              {
-                "name": "input",
-                "type": "String"
-              },
-              {
-                "name": "model",
-                "type": "String"
-              }
-            ]
           }
         ]
       },
@@ -143,8 +66,74 @@
             "hints": {
               "primary": true
             }
+          },
+          {
+            "name": "complete",
+            "type": "String",
+            "params": [
+              {
+                "name": "prompt",
+                "type": "String"
+              },
+              {
+                "name": "max_tokens",
+                "type": "Int"
+              },
+              {
+                "name": "temperature",
+                "type": "Float"
+              }
+            ]
+          },
+          {
+            "name": "edit",
+            "type": "String",
+            "params": [
+              {
+                "name": "input",
+                "type": "String"
+              },
+              {
+                "name": "instruction",
+                "type": "String"
+              },
+              {
+                "name": "temperature",
+                "type": "Float"
+              }
+            ]
+          },
+          {
+            "name": "generateImage",
+            "type": "List",
+            "ofType": "Image",
+            "params": [
+              {
+                "name": "prompt",
+                "type": "String"
+              },
+              {
+                "name": "n",
+                "type": "Int"
+              },
+              {
+                "name": "size",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "moderate",
+            "type": "Moderation",
+            "params": [
+              {
+                "name": "input",
+                "type": "String"
+              }
+            ]
           }
-        ]
+        ],
+        "actions": []
       },
       {
         "name": "Image",

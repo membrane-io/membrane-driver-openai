@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { state, nodes, root } from "membrane";
 
 async function api(
-  method: "GET" | "POST" | "PUT",
+  method: "GET" | "POST",
   path: string,
   body?: string | object
 ) {
@@ -50,40 +50,48 @@ export const Model = {
   gref({ obj }) {
     return root.models.one({ id: obj.id });
   },
-};
-
-export async function completion({
-  args: {
-    model = "text-davinci-003",
-    max_tokens = 100,
-    temperature = 0.9,
-    ...rest
+  complete: async ({ self, args: { max_tokens = 1500, temperature = 0, ...rest } }) => {
+    const { id } = self.$argsAt(root.models.one);
+    let res = await api("POST", "completions", { model: id, max_tokens, temperature, ...rest });
+    try {
+      const choices = await res.json().then((json: any) => json && json.choices);
+      // Multiple choices when is passing array of texts
+      return choices[0].text.replace(/(\n|\t)/gm, "");
+    } catch (e) {
+      return `Failed to get completion.`;
+    }
   },
-}) {
-  let res = await api("POST", "completions", { model, ...rest });
+  edit: async ({ self, args: { temperature = 0.9, ...rest } }) => {
+    const { id } = self.$argsAt(root.models.one);
+    let res = await api("POST", "edits", { model: id, ...rest });
+    try {
+      const choices = await res.json().then((json: any) => json && json.choices);
+      // Multiple choices when is passing array of texts
+      return choices[0].text.replace(/(\n|\t)/gm, "");
+    } catch (e) {
+      return `Failed to get edit.`;
+    }
+  },
+  generateImage: async ({ args: { size = "1024x1024", ...rest } }) => {
+    const res = await api("POST", "images/generations", {
+      size: "1024x1024",
+      ...rest,
+    });
 
-  return await res.json().then((json: any) => json && json.choices[0].text.replace(/(\n|\t)/gm, ""));
-}
-
-export async function edit({
-  args: { model = "text-davinci-edit-001", temperature = 0.9, ...rest },
-}) {
-  let res = await api("POST", "edits", { model, ...rest });
-
-  return await res.json().then((json: any) => json && json.choices[0].text.replace(/(\n|\t)/gm, ""));
-}
-
-export async function image({ args: { size = "1024x1024", ...rest } }) {
-  const res = await api("POST", "images/generations", {
-    size: "1024x1024",
-    ...rest,
-  });
-
-  return await res.json().then((json: any) => json && json.data);
-}
-
-export async function moderation({ args }) {
-  const res = await api("POST", "moderations", args);
-
-  return await res.json().then((json: any) => json && json.results[0].categories);
-}
+    try {
+      return await res.json().then((json: any) => json && json.data);
+    } catch (e) {
+      return `Failed to generate image.`;
+    }
+  },
+  moderation: async ({ self, args }) => {
+    const { id } = self.$argsAt(root.models.one);
+    const res = await api("POST", "moderations", { model: id, ...args });
+    try {
+      // Multiple classifications when is passing array of texts
+      return await res.json().then((json: any) => json && json.results[0].categories);
+    } catch (e) {
+      return `Failed to generate image.`;
+    }
+  }
+};

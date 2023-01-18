@@ -218,6 +218,13 @@
             ],
             "fields": [
               {
+                "name": "status",
+                "description": "",
+                "type": "String",
+                "params": [],
+                "hints": {}
+              },
+              {
                 "name": "get",
                 "description": "A resource obtained via a GET request",
                 "type": "Resource",
@@ -283,6 +290,32 @@
           }
         ],
         "imports": [
+          {
+            "name": "sys-process",
+            "schema": {
+              "types": [
+                {
+                  "name": "Root",
+                  "description": "",
+                  "actions": [],
+                  "fields": [
+                    {
+                      "name": "endpointUrl",
+                      "description": "Gets the program's own endpoint URL",
+                      "type": "String",
+                      "params": [],
+                      "hints": {}
+                    }
+                  ],
+                  "events": []
+                }
+              ],
+              "imports": []
+            },
+            "source": {
+              "Program": "tbd"
+            }
+          },
           {
             "name": "sys-http",
             "schema": {
