@@ -91,7 +91,7 @@ export const Model = {
       // Multiple classifications when is passing array of texts
       return await res.json().then((json: any) => json && json.results[0].categories);
     } catch (e) {
-      return `Failed to generate image.`;
+      return `Failed to get moderation.`;
     }
   }
 };
