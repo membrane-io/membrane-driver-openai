@@ -1,4 +1,4 @@
-<!-- # OpenAI Driver
+# OpenAI Driver
 
 This [driver](https://membrane.io) lets you interact with OpenAI through your Membrane graph.
 
@@ -34,7 +34,7 @@ Result:
 
 ### Create completion
 
-`mctl action 'openai:completion(prompt:"what is vercel")'`
+`mctl action 'openai:models.one(id:"text-davinci-001").complete(prompt:"what is vercel")'`
 
 ```
 Result:
@@ -43,7 +43,7 @@ Result:
 
 ### Create image
 
-`mctl action 'openai:image(prompt:"real martian")'`
+`mctl action 'openai:models.one(id:"<Any>").generateImage(prompt:"real martian")'`
 
 ```
 Result:
@@ -57,7 +57,7 @@ Result:
 
 ### Create moderation
 
-`mctl action 'openai:moderation(input:"I want to kill you")'`
+`mctl action 'openai:models.one(id:"text-moderation-stable").moderate(input:"I want to kill you")'`
 
 ```
 Result:
@@ -74,7 +74,7 @@ Result:
 
 ### Create edit
 
-`mctl action 'openai:edit(input:"what ares wikipedia?", instruction:"Fix the spelling mistakes")'`
+`mctl action 'openai:models.one(id:"text-davinci-edit-001").edit(input:"what ares wikipedia?", instruction:"Fix the spelling mistakes")'`
 
 ```
 Result:
@@ -92,10 +92,6 @@ Result:
         models -> Ref<ModelsCollection>
     - Actions
         configure -> Void
-        completion -> String
-        moderation -> Ref<Moderation>
-        edit -> String
-        image -> List<Image>
 <ModelsCollection>
     - Fields
         one -> <Model>
@@ -105,6 +101,11 @@ Result:
         id -> String
         onject -> String
         owned_by -> Int
+    - Actions
+        complete -> String
+        moderate -> Ref<Moderation>
+        edit -> String
+        generateImage -> List<Image>
 <Image>
     - Fields
         url -> String
@@ -117,4 +118,3 @@ Result:
         self-harm -> String
         hate/threatening -> String
         hate -> String
-``` -->
