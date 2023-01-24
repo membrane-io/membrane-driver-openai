@@ -58,7 +58,7 @@ export const Model = {
       // Multiple choices when is passing array of texts
       return choices[0].text.replace(/(\n|\t)/gm, "");
     } catch (e) {
-      return `Failed to get completion.`;
+      throw new Error('Failed to get completion.');
     }
   },
   edit: async ({ self, args: { temperature = 0.9, ...rest } }) => {
@@ -69,7 +69,7 @@ export const Model = {
       // Multiple choices when is passing array of texts
       return choices[0].text.replace(/(\n|\t)/gm, "");
     } catch (e) {
-      return `Failed to get edit.`;
+      throw new Error('Failed to get edit.');
     }
   },
   generateImage: async ({ args: { size = "1024x1024", ...rest } }) => {
@@ -81,7 +81,7 @@ export const Model = {
     try {
       return await res.json().then((json: any) => json && json.data);
     } catch (e) {
-      return `Failed to generate image.`;
+      throw new Error('Failed to generate image.');
     }
   },
   moderation: async ({ self, args }) => {
@@ -91,7 +91,7 @@ export const Model = {
       // Multiple classifications when is passing array of texts
       return await res.json().then((json: any) => json && json.results[0].categories);
     } catch (e) {
-      return `Failed to get moderation.`;
+      throw new Error('Failed to get moderation.');
     }
   }
 };
