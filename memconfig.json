@@ -26,6 +26,25 @@
                 "type": "String"
               }
             ]
+          },
+          {
+            "name": "generateImage",
+            "type": "List",
+            "ofType": "Image",
+            "params": [
+              {
+                "name": "prompt",
+                "type": "String"
+              },
+              {
+                "name": "n",
+                "type": "Int"
+              },
+              {
+                "name": "size",
+                "type": "String"
+              }
+            ]
           }
         ]
       },
@@ -102,25 +121,6 @@
               {
                 "name": "temperature",
                 "type": "Float"
-              }
-            ]
-          },
-          {
-            "name": "generateImage",
-            "type": "List",
-            "ofType": "Image",
-            "params": [
-              {
-                "name": "prompt",
-                "type": "String"
-              },
-              {
-                "name": "n",
-                "type": "Int"
-              },
-              {
-                "name": "size",
-                "type": "String"
               }
             ]
           },
