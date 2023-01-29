@@ -43,7 +43,7 @@ Result:
 
 ### Create image
 
-`mctl action 'openai:models.one(id:"<Any>").generateImage(prompt:"real martian")'`
+`mctl action 'openai:generateImage(prompt:"real martian")'`
 
 ```
 Result:
@@ -92,6 +92,7 @@ Result:
         models -> Ref<ModelsCollection>
     - Actions
         configure -> Void
+        generateImage -> List<Image>
 <ModelsCollection>
     - Fields
         one -> <Model>
@@ -105,7 +106,6 @@ Result:
         complete -> String
         moderate -> Ref<Moderation>
         edit -> String
-        generateImage -> List<Image>
 <Image>
     - Fields
         url -> String

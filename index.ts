@@ -20,6 +20,18 @@ export const Root = {
   models() {
     return {};
   },
+  generateImage: async ({ args: { size = "1024x1024", ...rest } }) => {
+    const res = await api("POST", "images/generations", {
+      size: "1024x1024",
+      ...rest,
+    });
+
+    try {
+      return await res.json().then((json: any) => json && json.data);
+    } catch (e) {
+      throw new Error('Failed to generate image.');
+    }
+  },
   status() {
     if (!state.token) {
       return "Please [get and configure the OpenAI API key](https://beta.openai.com/account/api-keys)";
@@ -72,19 +84,7 @@ export const Model = {
       throw new Error('Failed to get edit.');
     }
   },
-  generateImage: async ({ args: { size = "1024x1024", ...rest } }) => {
-    const res = await api("POST", "images/generations", {
-      size: "1024x1024",
-      ...rest,
-    });
-
-    try {
-      return await res.json().then((json: any) => json && json.data);
-    } catch (e) {
-      throw new Error('Failed to generate image.');
-    }
-  },
-  moderation: async ({ self, args }) => {
+  moderate: async ({ self, args }) => {
     const { id } = self.$argsAt(root.models.one);
     const res = await api("POST", "moderations", { model: id, ...args });
     try {
