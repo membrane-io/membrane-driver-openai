@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import { state, nodes, root } from "membrane";
-
+ 
 async function api(
   method: "GET" | "POST",
   path: string,
