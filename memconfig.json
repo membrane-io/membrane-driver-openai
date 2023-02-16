@@ -6,6 +6,7 @@
     "types": [
       {
         "name": "Root",
+        "description": "Integrate OpenAI's language model API with Membrane",
         "fields": [
           {
             "name": "status",
