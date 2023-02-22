@@ -6,7 +6,7 @@ This [driver](https://membrane.io) lets you interact with OpenAI through your Me
 
 ### List models:
 
-`mctl query 'openai:models.page' '{ id owned_by object }'`
+`mctl query 'openai:models.page' '{ id owned_by object }'` 
 
 ```
 Result:
