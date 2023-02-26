@@ -150,7 +150,7 @@
         "name": "Moderation",
         "fields": [
           {
-            "name": "violence/graphic",
+            "name": "violence_graphic",
             "type": "Boolean"
           },
           {
@@ -158,7 +158,7 @@
             "type": "Boolean"
           },
           {
-            "name": "sexual/minors",
+            "name": "sexual_minors",
             "type": "Boolean"
           },
           {
@@ -170,7 +170,7 @@
             "type": "Boolean"
           },
           {
-            "name": "hate/threatening",
+            "name": "hate_threatening",
             "type": "Boolean"
           },
           {
