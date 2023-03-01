@@ -2,7 +2,7 @@
 
 This [driver](https://membrane.io) lets you interact with OpenAI through your Membrane graph.
 	
-## Queries
+## Queries 
 
 ### List models:
 
