@@ -46,6 +46,20 @@
                 "type": "String"
               }
             ]
+          },
+          {
+            "name": "moderate",
+            "type": "Moderation",
+            "params": [
+              {
+                "name": "input",
+                "type": "String"
+              },
+              {
+                "name": "stable",
+                "type": "Boolean"
+              }
+            ]
           }
         ]
       },
@@ -124,16 +138,6 @@
                 "type": "Float"
               }
             ]
-          },
-          {
-            "name": "moderate",
-            "type": "Moderation",
-            "params": [
-              {
-                "name": "input",
-                "type": "String"
-              }
-            ]
           }
         ]
       },
@@ -166,7 +170,7 @@
             "type": "Boolean"
           },
           {
-            "name": "self-harm",
+            "name": "self_harm",
             "type": "Boolean"
           },
           {
@@ -176,6 +180,34 @@
           {
             "name": "hate",
             "type": "Boolean"
+          },
+          {
+            "name": "violence_graphic_score",
+            "type": "Float"
+          },
+          {
+            "name": "violence_score",
+            "type": "Float"
+          },
+          {
+            "name": "sexual_minors_score",
+            "type": "Float"
+          },
+          {
+            "name": "sexual_score",
+            "type": "Float"
+          },
+          {
+            "name": "self_harm_score",
+            "type": "Float"
+          },
+          {
+            "name": "hate_threatening_score",
+            "type": "Float"
+          },
+          {
+            "name": "hate_score",
+            "type": "Float"
           }
         ]
       }
