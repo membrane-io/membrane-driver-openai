@@ -458,7 +458,10 @@
           },
           {
             "name": "created_at",
-            "type": "Int"
+            "hints": {
+              "primary": true
+            },
+            "type": "String"
           },
           {
             "name": "filename",

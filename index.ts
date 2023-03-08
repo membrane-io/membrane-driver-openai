@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import { state, nodes, root } from "membrane";
 import { api } from "./utils";
 
@@ -31,9 +30,7 @@ export const Root = {
     }
   },
   moderate: async ({ args }) => {
-    const model = args.stable
-      ? "text-moderation-stable"
-      : "text-moderation-latest";
+    const model = args.stable ? "text-moderation-stable" : "text-moderation-latest";
     const input = args.input;
     const res = await api("POST", "moderations", { model, input });
 
@@ -51,8 +48,7 @@ export const Root = {
       ret[key.replace("/", "_").replace("-", "_")] = result.categories[key];
     }
     for (const key of Object.keys(result.category_scores)) {
-      ret[key.replace("/", "_").replace("-", "_") + "_score"] =
-        result.category_scores[key];
+      ret[key.replace("/", "_").replace("-", "_") + "_score"] = result.category_scores[key];
     }
     return ret;
   },
@@ -88,7 +84,7 @@ export const FilesCollection = {
     // TODO: Implement
     // const res = await api("POST", "files", args);
     // return res.json().then((json: any) => json && json);
-  }
+  },
 };
 
 export const FineTunesCollection = {
@@ -107,29 +103,29 @@ export const FineTunesCollection = {
     const res = await api("POST", "fine-tunes", args);
 
     return res.json().then((json: any) => json && json);
-  }
+  },
 };
 
 export const FineTune = {
   gref({ obj }) {
     return root.fineTunes.one({ id: obj.id });
-  }
+  },
 };
 
 export const File = {
   gref({ obj }) {
     return root.files.one({ id: obj.id });
-  }
+  },
+  created_at({ obj }) {
+    return new Date(obj.created_at * 1000).toISOString();
+  },
 };
 
 export const Model = {
   gref({ obj }) {
     return root.models.one({ id: obj.id });
   },
-  complete: async ({
-    self,
-    args: { max_tokens = 1500, temperature = 0, ...rest },
-  }) => {
+  complete: async ({ self, args: { max_tokens = 1500, temperature = 0, ...rest } }) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "completions", {
       model: id,
@@ -138,9 +134,7 @@ export const Model = {
       ...rest,
     });
     try {
-      const choices = await res
-        .json()
-        .then((json: any) => json && json.choices);
+      const choices = await res.json().then((json: any) => json && json.choices);
       // Multiple choices when is passing array of texts
       return choices[0].text.replace(/(\n|\t)/gm, "");
     } catch (e) {
@@ -151,9 +145,7 @@ export const Model = {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "edits", { model: id, ...rest });
     try {
-      const choices = await res
-        .json()
-        .then((json: any) => json && json.choices);
+      const choices = await res.json().then((json: any) => json && json.choices);
       // Multiple choices when is passing array of texts
       return choices[0].text.replace(/(\n|\t)/gm, "");
     } catch (e) {
