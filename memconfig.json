@@ -15,6 +15,14 @@
           {
             "name": "models",
             "type": "ModelsCollection"
+          },
+          {
+            "name": "fineTunes",
+            "type": "FineTunesCollection"
+          },
+          {
+            "name": "files",
+            "type": "FilesCollection"
           }
         ],
         "actions": [
@@ -80,6 +88,83 @@
             "name": "page",
             "type": "List",
             "ofType": "Model"
+          }
+        ]
+      },
+      {
+        "name": "FineTunesCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "FineTune",
+            "params": [
+              {
+                "name": "id",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "List",
+            "ofType": "FineTune"
+          }
+        ],
+        "actions": [
+          {
+            "name": "create",
+            "type": "FineTune",
+            "params": [
+              {
+                "name": "training_file",
+                "type": "String"
+              },
+              {
+                "name": "validation_file",
+                "type": "String"
+              },
+              {
+                "name": "model",
+                "type": "String"
+              },
+              {
+                "name": "n_epochs",
+                "type": "Int"
+              },
+              {
+                "name": "batch_size",
+                "type": "Int"
+              },
+              {
+                "name": "learning_rate_multiplier",
+                "type": "Float"
+              },
+              {
+                "name": "prompt_loss_weight",
+                "type": "Float"
+              },
+              {
+                "name": "compute_classification_metrics",
+                "type": "Boolean"
+              },
+              {
+                "name": "classification_n_classes",
+                "type": "Int"
+              },
+              {
+                "name": "classification_positive_class",
+                "type": "String"
+              },
+              {
+                "name": "classification_betas",
+                "type": "List",
+                "ofType": "Float"
+              },
+              {
+                "name": "suffix",
+                "type": "String"
+              }
+            ]
           }
         ]
       },
@@ -208,6 +293,169 @@
           {
             "name": "hate_score",
             "type": "Float"
+          }
+        ]
+      },
+      {
+        "name": "FineTune",
+        "fields": [
+          {
+            "name": "id",
+            "type": "String"
+          },
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "model",
+            "type": "String",
+            "hints": {
+              "primary": true
+            }
+          },
+          {
+            "name": "hyperparams",
+            "type": "Hyperparams"
+          },
+          {
+            "name": "fine_tuned_model",
+            "type": "String"
+          },
+          {
+            "name": "organization_id",
+            "type": "String"
+          },
+          {
+            "name": "status",
+            "type": "String"
+          },
+          {
+            "name": "created_at",
+            "type": "Int"
+          },
+          {
+            "name": "updated_at",
+            "type": "Int"
+          },
+          {
+            "name": "events",
+            "type": "Events"
+          },
+          {
+            "name": "result_files",
+            "type": "List",
+            "ofType": "File"
+          },
+          {
+            "name": "training_files",
+            "type": "List",
+            "ofType": "File"
+          },
+          {
+            "name": "validation_files",
+            "type": "List",
+            "ofType": "File"
+          }
+        ]
+      },
+      {
+        "name": "Hyperparams",
+        "fields": [
+          {
+            "name": "batch_size",
+            "type": "Int"
+          },
+          {
+            "name": "learning_rate_multiplier",
+            "type": "Float"
+          },
+          {
+            "name": "n_epochs",
+            "type": "Int"
+          },
+          {
+            "name": "prompt_loss_weight",
+            "type": "Float"
+          }
+        ]
+      },
+      {
+        "name": "Events",
+        "fields": [
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "created_at",
+            "type": "Int"
+          },
+          {
+            "name": "level",
+            "type": "String"
+          },
+          {
+            "name": "message",
+            "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "FilesCollection",
+        "fields": [
+          {
+            "name": "one",
+            "type": "File",
+            "params": [
+              {
+                "name": "id",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "items",
+            "type": "List",
+            "ofType": "File"
+          }
+        ],
+        "actions": [
+          {
+            "name": "upload",
+            "type": "Void"
+          }
+        ]
+      },
+      {
+        "name": "File",
+        "fields": [
+          {
+            "name": "id",
+            "type": "String"
+          },
+          {
+            "name": "object",
+            "type": "String"
+          },
+          {
+            "name": "bytes",
+            "type": "Int"
+          },
+          {
+            "name": "created_at",
+            "type": "Int"
+          },
+          {
+            "name": "filename",
+            "hints": {
+              "primary": true
+            },
+            "type": "String"
+          },
+          {
+            "name": "purpose",
+            "type": "String"
           }
         ]
       }

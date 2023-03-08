@@ -1,20 +1,6 @@
 import fetch from "node-fetch";
 import { state, nodes, root } from "membrane";
-
-async function api(
-  method: "GET" | "POST",
-  path: string,
-  body?: string | object
-) {
-  return await fetch(`https://api.openai.com/v1/${path}`, {
-    method,
-    body: typeof body === "object" ? JSON.stringify(body) : body,
-    headers: {
-      Authorization: `Bearer ${state.token}`,
-      "Content-Type": "application/json",
-    },
-  });
-}
+import { api } from "./utils";
 
 export const Root = {
   status() {
@@ -30,6 +16,8 @@ export const Root = {
   models() {
     return {};
   },
+  files: () => ({}),
+  fineTunes: () => ({}),
   generateImage: async ({ args: { size = "1024x1024", ...rest } }) => {
     const res = await api("POST", "images/generations", {
       size: "1024x1024",
@@ -82,6 +70,56 @@ export const ModelsCollection = {
 
     return await res.json().then((json: any) => json && json.data);
   },
+};
+
+export const FilesCollection = {
+  one: async ({ args }) => {
+    const res = await api("GET", `files/${args.id}`);
+
+    return res.json().then((json: any) => json && json);
+  },
+
+  items: async ({ self, args }) => {
+    let res = await api("GET", "files");
+
+    return await res.json().then((json: any) => json && json.data);
+  },
+  upload: async ({ args }) => {
+    // TODO: Implement
+    // const res = await api("POST", "files", args);
+    // return res.json().then((json: any) => json && json);
+  }
+};
+
+export const FineTunesCollection = {
+  one: async ({ args }) => {
+    const res = await api("GET", `fine-tunes/${args.id}`);
+
+    return res.json().then((json: any) => json && json);
+  },
+
+  items: async ({ self, args }) => {
+    let res = await api("GET", "fine-tunes");
+
+    return await res.json().then((json: any) => json && json.data);
+  },
+  create: async ({ args }) => {
+    const res = await api("POST", "fine-tunes", args);
+
+    return res.json().then((json: any) => json && json);
+  }
+};
+
+export const FineTune = {
+  gref({ obj }) {
+    return root.fineTunes.one({ id: obj.id });
+  }
+};
+
+export const File = {
+  gref({ obj }) {
+    return root.files.one({ id: obj.id });
+  }
 };
 
 export const Model = {
