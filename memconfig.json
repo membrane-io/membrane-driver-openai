@@ -423,7 +423,21 @@
         "actions": [
           {
             "name": "upload",
-            "type": "Void"
+            "type": "Void",
+            "params": [
+              {
+                "name": "name",
+                "type": "String"
+              },
+              {
+                "name": "contents",
+                "type": "String"
+              },
+              {
+                "name": "purpose",
+                "type": "String"
+              }
+            ]
           }
         ]
       },
