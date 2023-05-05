@@ -125,7 +125,7 @@ export const Model = {
   gref({ obj }) {
     return root.models.one({ id: obj.id });
   },
-  complete: async ({ self, args: { max_tokens = 1500, temperature = 0, ...rest } }) => {
+  completeText: async ({ self, args: { max_tokens = 1500, temperature = 0.2, ...rest } }) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "completions", {
       model: id,
@@ -136,9 +136,28 @@ export const Model = {
     try {
       const choices = await res.json().then((json: any) => json && json.choices);
       // Multiple choices when is passing array of texts
-      return choices[0].text.replace(/(\n|\t)/gm, "");
+      return choices[0].text;
     } catch (e) {
       throw new Error("Failed to get completion.");
+    }
+  },
+  completeChat: async ({
+    self,
+    args: { max_tokens = 3000, temperature = 0, messages, ...rest },
+  }) => {
+    const { id } = self.$argsAt(root.models.one);
+    let res = await api("POST", "chat/completions", {
+      model: id,
+      messages: JSON.parse(messages),
+      max_tokens,
+      temperature,
+      ...rest,
+    });
+    try {
+      const choices = await res.json().then((json: any) => json && json.choices);
+      return choices[0].message.content;
+    } catch (e) {
+      throw new Error(e);
     }
   },
   edit: async ({ self, args: { temperature = 0.9, ...rest } }) => {
@@ -147,9 +166,19 @@ export const Model = {
     try {
       const choices = await res.json().then((json: any) => json && json.choices);
       // Multiple choices when is passing array of texts
-      return choices[0].text.replace(/(\n|\t)/gm, "");
+      return choices[0].text;
     } catch (e) {
       throw new Error("Failed to get edit.");
+    }
+  },
+  createEmbeddings: async ({ self, args: { input, user } }) => {
+    const { id } = self.$argsAt(root.models.one);
+    try {
+      //TODO: Multiple inputs when is passsing text separated by comma - str.split(',')
+      let res = await api("POST", "embeddings", { model: id, user, input });
+      return JSON.stringify(await res.json().then((json: any) => json && json.data));
+    } catch (e) {
+      throw new Error("Failed to create embeddings.");
     }
   },
 };

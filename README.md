@@ -114,6 +114,7 @@ Result:
         owned_by -> Int
     - Actions
         complete -> String
+        chat -> String
         moderate -> Ref<Moderation>
         edit -> String
 <File>

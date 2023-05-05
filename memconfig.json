@@ -189,7 +189,7 @@
         ],
         "actions": [
           {
-            "name": "complete",
+            "name": "completeText",
             "type": "String",
             "params": [
               {
@@ -203,6 +203,54 @@
               {
                 "name": "temperature",
                 "type": "Float"
+              },
+              {
+                "name": "suffix",
+                "type": "String"
+              },
+              {
+                "name": "top_p",
+                "type": "Float"
+              },
+              {
+                "name": "n",
+                "type": "Int"
+              },
+              {
+                "name": "stream",
+                "type": "Boolean"
+              },
+              {
+                "name": "logprobs",
+                "type": "Int"
+              },
+              {
+                "name": "echo",
+                "type": "Boolean"
+              },
+              {
+                "name": "stop",
+                "type": "String"
+              },
+              {
+                "name": "presence_penalty",
+                "type": "Float"
+              },
+              {
+                "name": "frequency_penalty",
+                "type": "Float"
+              },
+              {
+                "name": "best_of",
+                "type": "Int"
+              },
+              {
+                "name": "logit_bias",
+                "type": "String"
+              },
+              {
+                "name": "user",
+                "type": "String"
               }
             ]
           },
@@ -221,6 +269,70 @@
               {
                 "name": "temperature",
                 "type": "Float"
+              }
+            ]
+          },
+          {
+            "name": "completeChat",
+            "type": "String",
+            "params": [
+              {
+                "name": "messages",
+                "type": "String"
+              },
+              {
+                "name": "temperature",
+                "type": "Float"
+              },
+              {
+                "name": "top_p",
+                "type": "Float"
+              },
+              {
+                "name": "n",
+                "type": "Int"
+              },
+              {
+                "name": "stream",
+                "type": "String"
+              },
+              {
+                "name": "stop",
+                "type": "String"
+              },
+              {
+                "name": "max_tokens",
+                "type": "Int"
+              },
+              {
+                "name": "presence_penalty",
+                "type": "Float"
+              },
+              {
+                "name": "frequency_penalty",
+                "type": "Float"
+              },
+              {
+                "name": "logit_bias",
+                "type": "String"
+              },
+              {
+                "name": "user",
+                "type": "String"
+              }
+            ]
+          },
+          {
+            "name": "createEmbeddings",
+            "type": "String",
+            "params": [
+              {
+                "name": "input",
+                "type": "String"
+              },
+              {
+                "name": "user",
+                "type": "String"
               }
             ]
           }
