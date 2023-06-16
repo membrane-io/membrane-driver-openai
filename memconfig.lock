@@ -21,14 +21,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -41,14 +44,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -61,14 +67,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -81,14 +90,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -110,10 +122,12 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -126,10 +140,12 @@
                 "params": [
                   {
                     "name": "api",
+                    "description": "The API to use. Check https://www.membrane.io/docs for a list of APIs that support this",
                     "type": "String"
                   },
                   {
                     "name": "authId",
+                    "description": "An arbitrary gref that uniquely identifies this program.",
                     "type": "Ref",
                     "ofType": "String"
                   }
@@ -202,14 +218,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -222,14 +241,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -242,14 +264,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -262,14 +287,17 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "body",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -284,10 +312,12 @@
                 "params": [
                   {
                     "name": "url",
+                    "description": "",
                     "type": "String"
                   },
                   {
                     "name": "headers",
+                    "description": "",
                     "type": "String"
                   }
                 ],
@@ -328,14 +358,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -348,14 +381,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -368,14 +404,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -388,14 +427,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -410,10 +452,12 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -426,10 +470,12 @@
                       "params": [
                         {
                           "name": "api",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "authId",
+                          "description": "",
                           "type": "Ref",
                           "ofType": "String"
                         }
@@ -486,14 +532,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -506,14 +555,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -526,14 +578,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -546,14 +601,17 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "body",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -568,10 +626,12 @@
                       "params": [
                         {
                           "name": "url",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "headers",
+                          "description": "",
                           "type": "String"
                         }
                       ],
@@ -609,10 +669,12 @@
                       "params": [
                         {
                           "name": "key",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "seconds",
+                          "description": "",
                           "type": "Float"
                         }
                       ],
@@ -628,14 +690,17 @@
                       "params": [
                         {
                           "name": "key",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "spec",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "maxCount",
+                          "description": "",
                           "type": "Int"
                         }
                       ],
@@ -648,10 +713,12 @@
                       "params": [
                         {
                           "name": "key",
+                          "description": "",
                           "type": "String"
                         },
                         {
                           "name": "seconds",
+                          "description": "",
                           "type": "String"
                         }
                       ],

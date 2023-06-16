@@ -281,6 +281,10 @@
                 "type": "String"
               },
               {
+                "name": "functions",
+                "type": "String"
+              },
+              {
                 "name": "temperature",
                 "type": "Float"
               },
@@ -328,6 +332,10 @@
             "params": [
               {
                 "name": "input",
+                "type": "String"
+              },
+              {
+                "name": "inputs",
                 "type": "String"
               },
               {

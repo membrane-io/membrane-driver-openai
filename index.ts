@@ -143,11 +143,12 @@ export const Model = {
   },
   completeChat: async ({
     self,
-    args: { max_tokens = 3000, temperature = 0, messages, ...rest },
+    args: { max_tokens = 2000, temperature = 0, messages, functions, ...rest },
   }) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "chat/completions", {
       model: id,
+      functions: JSON.parse(functions),
       messages: JSON.parse(messages),
       max_tokens,
       temperature,
@@ -155,7 +156,7 @@ export const Model = {
     });
     try {
       const choices = await res.json().then((json: any) => json && json.choices);
-      return choices[0].message.content;
+      return JSON.stringify(choices[0].message);
     } catch (e) {
       throw new Error(e);
     }
@@ -171,14 +172,23 @@ export const Model = {
       throw new Error("Failed to get edit.");
     }
   },
-  createEmbeddings: async ({ self, args: { input, user } }) => {
+  createEmbeddings: async ({ self, args: { input, inputs, user } }) => {
     const { id } = self.$argsAt(root.models.one);
     try {
-      //TODO: Multiple inputs when is passsing text separated by comma - str.split(',')
-      let res = await api("POST", "embeddings", { model: id, user, input });
-      return JSON.stringify(await res.json().then((json: any) => json && json.data));
+      if (input && inputs) {
+        throw new Error("Both input and inputs cannot be passed at the same time.");
+      }
+      let res: any;
+      if (inputs) {
+        const parsedInput = JSON.parse(inputs);
+        res = await api("POST", "embeddings", { model: id, user, input: parsedInput });
+      } else {
+        res = await api("POST", "embeddings", { model: id, user, input });
+      }
+      return JSON.stringify(await res.json().then((json) => json && json.data));
     } catch (e) {
       throw new Error("Failed to create embeddings.");
     }
-  },
+  }
+  
 };
