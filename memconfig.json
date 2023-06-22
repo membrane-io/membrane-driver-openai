@@ -70,7 +70,7 @@
               {
                 "name": "stable",
                 "type": "Boolean",
-                "optional": false
+                "optional": true
               }
             ]
           }
@@ -206,7 +206,8 @@
             "params": [
               {
                 "name": "prompt",
-                "type": "String"
+                "type": "String",
+                "optional": false
               },
               {
                 "name": "max_tokens",
