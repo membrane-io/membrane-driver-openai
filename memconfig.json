@@ -43,15 +43,18 @@
             "params": [
               {
                 "name": "prompt",
-                "type": "String"
+                "type": "String",
+                "optional": false
               },
               {
                 "name": "n",
-                "type": "Int"
+                "type": "Int",
+                "optional": false
               },
               {
                 "name": "size",
-                "type": "String"
+                "type": "String",
+                "optional": false
               }
             ]
           },
@@ -61,11 +64,13 @@
             "params": [
               {
                 "name": "input",
-                "type": "String"
+                "type": "String",
+                "optional": false
               },
               {
                 "name": "stable",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": false
               }
             ]
           }
@@ -137,32 +142,39 @@
               },
               {
                 "name": "learning_rate_multiplier",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "prompt_loss_weight",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "compute_classification_metrics",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": true
               },
               {
                 "name": "classification_n_classes",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "classification_positive_class",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "classification_betas",
                 "type": "List",
-                "ofType": "Float"
+                "ofType": "Float",
+                "optional": true
               },
               {
                 "name": "suffix",
-                "type": "String"
+                "type": "String",
+                "optional": true
               }
             ]
           }
@@ -198,59 +210,73 @@
               },
               {
                 "name": "max_tokens",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "temperature",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "suffix",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "top_p",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "n",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "stream",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": true
               },
               {
                 "name": "logprobs",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "echo",
-                "type": "Boolean"
+                "type": "Boolean",
+                "optional": true
               },
               {
                 "name": "stop",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "presence_penalty",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "frequency_penalty",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "best_of",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "logit_bias",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "user",
-                "type": "String"
+                "type": "String",
+                "optional": true
               }
             ]
           },
@@ -264,11 +290,13 @@
               },
               {
                 "name": "instruction",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "temperature",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               }
             ]
           },
@@ -282,47 +310,58 @@
               },
               {
                 "name": "functions",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "temperature",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "top_p",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "n",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "stream",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "stop",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "max_tokens",
-                "type": "Int"
+                "type": "Int",
+                "optional": true
               },
               {
                 "name": "presence_penalty",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "frequency_penalty",
-                "type": "Float"
+                "type": "Float",
+                "optional": true
               },
               {
                 "name": "logit_bias",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "user",
-                "type": "String"
+                "type": "String",
+                "optional": true
               }
             ]
           },
@@ -332,15 +371,18 @@
             "params": [
               {
                 "name": "input",
-                "type": "String"
+                "type": "String",
+                "optional": false
               },
               {
                 "name": "inputs",
-                "type": "String"
+                "type": "String",
+                "optional": true
               },
               {
                 "name": "user",
-                "type": "String"
+                "type": "String",
+                "optional": true
               }
             ]
           }
@@ -555,7 +597,8 @@
               },
               {
                 "name": "purpose",
-                "type": "String"
+                "type": "String",
+                "optional": true
               }
             ]
           }
