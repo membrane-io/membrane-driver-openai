@@ -373,7 +373,7 @@
               {
                 "name": "input",
                 "type": "String",
-                "optional": false
+                "optional": true
               },
               {
                 "name": "inputs",
