@@ -23,6 +23,10 @@
           {
             "name": "files",
             "type": "FilesCollection"
+          },
+          {
+            "name": "tests",
+            "type": "Tests"
           }
         ],
         "actions": [
@@ -307,11 +311,11 @@
             "params": [
               {
                 "name": "messages",
-                "type": "String"
+                "type": "Json"
               },
               {
                 "name": "functions",
-                "type": "String",
+                "type": "Json",
                 "optional": true
               },
               {
@@ -377,7 +381,7 @@
               },
               {
                 "name": "inputs",
-                "type": "String",
+                "type": "Json",
                 "optional": true
               },
               {
@@ -637,6 +641,15 @@
           {
             "name": "purpose",
             "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "Tests",
+        "actions": [
+          {
+            "name": "testGetModels",
+            "type": "Boolean"
           }
         ]
       }
