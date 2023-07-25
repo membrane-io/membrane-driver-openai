@@ -30,7 +30,9 @@ export const Root = {
     }
   },
   moderate: async ({ args }) => {
-    const model = args.stable ? "text-moderation-stable" : "text-moderation-latest";
+    const model = args.stable
+      ? "text-moderation-stable"
+      : "text-moderation-latest";
     const input = args.input;
     const res = await api("POST", "moderations", { model, input });
 
@@ -48,7 +50,8 @@ export const Root = {
       ret[key.replace("/", "_").replace("-", "_")] = result.categories[key];
     }
     for (const key of Object.keys(result.category_scores)) {
-      ret[key.replace("/", "_").replace("-", "_") + "_score"] = result.category_scores[key];
+      ret[key.replace("/", "_").replace("-", "_") + "_score"] =
+        result.category_scores[key];
     }
     return ret;
   },
@@ -125,7 +128,10 @@ export const Model = {
   gref({ obj }) {
     return root.models.one({ id: obj.id });
   },
-  completeText: async ({ self, args: { max_tokens = 1500, temperature = 0.2, ...rest } }) => {
+  completeText: async ({
+    self,
+    args: { max_tokens = 1500, temperature = 0.2, ...rest },
+  }) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "completions", {
       model: id,
@@ -134,7 +140,9 @@ export const Model = {
       ...rest,
     });
     try {
-      const choices = await res.json().then((json: any) => json && json.choices);
+      const choices = await res
+        .json()
+        .then((json: any) => json && json.choices);
       // Multiple choices when is passing array of texts
       return choices[0].text;
     } catch (e) {
@@ -155,7 +163,9 @@ export const Model = {
       ...rest,
     });
     try {
-      const choices = await res.json().then((json: any) => json && json.choices);
+      const choices = await res
+        .json()
+        .then((json: any) => json && json.choices);
       return JSON.stringify(choices[0].message);
     } catch (e) {
       throw new Error(e);
@@ -165,7 +175,9 @@ export const Model = {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "edits", { model: id, ...rest });
     try {
-      const choices = await res.json().then((json: any) => json && json.choices);
+      const choices = await res
+        .json()
+        .then((json: any) => json && json.choices);
       // Multiple choices when is passing array of texts
       return choices[0].text;
     } catch (e) {
@@ -176,12 +188,18 @@ export const Model = {
     const { id } = self.$argsAt(root.models.one);
     try {
       if (input && inputs) {
-        throw new Error("Both input and inputs cannot be passed at the same time.");
+        throw new Error(
+          "Both input and inputs cannot be passed at the same time."
+        );
       }
       let res: any;
       if (inputs) {
         const parsedInput = JSON.parse(inputs);
-        res = await api("POST", "embeddings", { model: id, user, input: parsedInput });
+        res = await api("POST", "embeddings", {
+          model: id,
+          user,
+          input: parsedInput,
+        });
       } else {
         res = await api("POST", "embeddings", { model: id, user, input });
       }
@@ -189,6 +207,5 @@ export const Model = {
     } catch (e) {
       throw new Error("Failed to create embeddings.");
     }
-  }
-  
+  },
 };
