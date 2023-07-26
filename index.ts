@@ -63,7 +63,7 @@ export const Root = {
 export const Tests = {
   testGetModels: async () => {
     const models = await root.models.page.$query(`{ id }`);
-    return Array.isArray(models) && (models.length === 0 || models.length > 0);
+    return Array.isArray(models);
   }
 }
 
