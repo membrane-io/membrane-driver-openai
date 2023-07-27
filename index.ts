@@ -55,7 +55,18 @@ export const Root = {
     }
     return ret;
   },
+  tests() {
+    return {};
+  },
 };
+
+export const Tests = {
+  testGetModels: async () => {
+    const models = await root.models.page.$query(`{ id }`);
+    return Array.isArray(models);
+  }
+}
+
 
 export const ModelsCollection = {
   async one({ args }) {
@@ -156,8 +167,8 @@ export const Model = {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "chat/completions", {
       model: id,
-      functions: JSON.parse(functions),
-      messages: JSON.parse(messages),
+      functions,
+      messages,
       max_tokens,
       temperature,
       ...rest,
@@ -194,12 +205,7 @@ export const Model = {
       }
       let res: any;
       if (inputs) {
-        const parsedInput = JSON.parse(inputs);
-        res = await api("POST", "embeddings", {
-          model: id,
-          user,
-          input: parsedInput,
-        });
+        res = await api("POST", "embeddings", { model: id, user, input: inputs });
       } else {
         res = await api("POST", "embeddings", { model: id, user, input });
       }
