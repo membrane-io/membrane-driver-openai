@@ -1,5 +1,8 @@
 {
-  "tags": ["driver", "ai"],
+  "tags": [
+    "driver",
+    "ai"
+  ],
   "dependencies": {
     "http": "http:"
   },
@@ -24,6 +27,10 @@
           {
             "name": "files",
             "type": "FilesCollection"
+          },
+          {
+            "name": "tests",
+            "type": "Tests"
           }
         ],
         "actions": [
@@ -378,7 +385,7 @@
               },
               {
                 "name": "inputs",
-                "type": "String",
+                "type": "Json",
                 "optional": true
               },
               {
@@ -638,6 +645,15 @@
           {
             "name": "purpose",
             "type": "String"
+          }
+        ]
+      },
+      {
+        "name": "Tests",
+        "actions": [
+          {
+            "name": "testGetModels",
+            "type": "Void"
           }
         ]
       }
