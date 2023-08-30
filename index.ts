@@ -4,7 +4,7 @@ import { api } from "./utils";
 export const Root = {
   status() {
     if (!state.token) {
-      return "Please [get and configure the OpenAI API key](https://beta.openai.com/account/api-keys)";
+      return "Please [get an OpenAI API key](https://beta.openai.com/account/api-keys) and [configure](:configure)";
     } else {
       return `Ready`;
     }
@@ -64,9 +64,8 @@ export const Tests = {
   testGetModels: async () => {
     const models = await root.models.page.$query(`{ id }`);
     return Array.isArray(models);
-  }
-}
-
+  },
+};
 
 export const ModelsCollection = {
   async one({ args }) {
@@ -205,7 +204,11 @@ export const Model = {
       }
       let res: any;
       if (inputs) {
-        res = await api("POST", "embeddings", { model: id, user, input: inputs });
+        res = await api("POST", "embeddings", {
+          model: id,
+          user,
+          input: inputs,
+        });
       } else {
         res = await api("POST", "embeddings", { model: id, user, input });
       }
