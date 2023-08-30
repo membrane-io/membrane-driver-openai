@@ -24,10 +24,6 @@
           {
             "name": "files",
             "type": "FilesCollection"
-          },
-          {
-            "name": "tests",
-            "type": "Tests"
           }
         ],
         "actions": [
@@ -43,7 +39,7 @@
           },
           {
             "name": "generateImage",
-            "type": "List",
+            "type": "Json",
             "ofType": "Image",
             "params": [
               {
@@ -308,7 +304,7 @@
           },
           {
             "name": "completeChat",
-            "type": "String",
+            "type": "Json",
             "params": [
               {
                 "name": "messages",
@@ -373,7 +369,7 @@
           },
           {
             "name": "createEmbeddings",
-            "type": "String",
+            "type": "Json",
             "params": [
               {
                 "name": "input",
@@ -382,7 +378,7 @@
               },
               {
                 "name": "inputs",
-                "type": "Json",
+                "type": "String",
                 "optional": true
               },
               {
@@ -642,15 +638,6 @@
           {
             "name": "purpose",
             "type": "String"
-          }
-        ]
-      },
-      {
-        "name": "Tests",
-        "actions": [
-          {
-            "name": "testGetModels",
-            "type": "Boolean"
           }
         ]
       }

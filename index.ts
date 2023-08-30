@@ -177,7 +177,7 @@ export const Model = {
       const choices = await res
         .json()
         .then((json: any) => json && json.choices);
-      return JSON.stringify(choices[0].message);
+      return choices[0].message;
     } catch (e) {
       throw new Error(e);
     }
@@ -209,7 +209,7 @@ export const Model = {
       } else {
         res = await api("POST", "embeddings", { model: id, user, input });
       }
-      return JSON.stringify(await res.json().then((json) => json && json.data));
+      return await res.json().then((json) => json && json.data);
     } catch (e) {
       throw new Error("Failed to create embeddings.");
     }
