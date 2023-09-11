@@ -9,7 +9,7 @@ export const Root = {
       return `Ready`;
     }
   },
-  configure({ args: { token } }) {
+  configure({ token }) {
     return (state.token = token);
   },
   models() {
@@ -17,7 +17,7 @@ export const Root = {
   },
   files: () => ({}),
   fineTunes: () => ({}),
-  generateImage: async ({ args: { size = "1024x1024", ...rest } }) => {
+  generateImage: async ({ size = "1024x1024", ...rest }) => {
     const res = await api("POST", "images/generations", {
       size: "1024x1024",
       ...rest,
@@ -29,7 +29,7 @@ export const Root = {
       throw new Error("Failed to generate image.");
     }
   },
-  moderate: async ({ args }) => {
+  moderate: async (args) => {
     const model = args.stable
       ? "text-moderation-stable"
       : "text-moderation-latest";
@@ -68,13 +68,13 @@ export const Tests = {
 };
 
 export const ModelsCollection = {
-  async one({ args }) {
+  async one(args) {
     const res = await api("GET", `models/${args.id}`);
 
     return res.json().then((json: any) => json && json);
   },
 
-  page: async ({ self, args }) => {
+  page: async (args, { self }) => {
     let res = await api("GET", "models");
 
     return await res.json().then((json: any) => json && json.data);
@@ -82,18 +82,18 @@ export const ModelsCollection = {
 };
 
 export const FilesCollection = {
-  one: async ({ args }) => {
+  one: async (args) => {
     const res = await api("GET", `files/${args.id}`);
 
     return res.json().then((json: any) => json && json);
   },
 
-  items: async ({ self, args }) => {
+  items: async (args, { self }) => {
     let res = await api("GET", "files");
 
     return await res.json().then((json: any) => json && json.data);
   },
-  upload: async ({ args }) => {
+  upload: async (args) => {
     // TODO: Implement
     // const res = await api("POST", "files", args);
     // return res.json().then((json: any) => json && json);
@@ -101,18 +101,18 @@ export const FilesCollection = {
 };
 
 export const FineTunesCollection = {
-  one: async ({ args }) => {
+  one: async (args) => {
     const res = await api("GET", `fine-tunes/${args.id}`);
 
     return res.json().then((json: any) => json && json);
   },
 
-  items: async ({ self, args }) => {
+  items: async (args, { self }) => {
     let res = await api("GET", "fine-tunes");
 
     return await res.json().then((json: any) => json && json.data);
   },
-  create: async ({ args }) => {
+  create: async (args) => {
     const res = await api("POST", "fine-tunes", args);
 
     return res.json().then((json: any) => json && json);
@@ -120,28 +120,28 @@ export const FineTunesCollection = {
 };
 
 export const FineTune = {
-  gref({ obj }) {
+  gref(_, { obj }) {
     return root.fineTunes.one({ id: obj.id });
   },
 };
 
 export const File = {
-  gref({ obj }) {
+  gref(_, { obj }) {
     return root.files.one({ id: obj.id });
   },
-  created_at({ obj }) {
+  created_at(_, { obj }) {
     return new Date(obj.created_at * 1000).toISOString();
   },
 };
 
 export const Model = {
-  gref({ obj }) {
+  gref(_, { obj }) {
     return root.models.one({ id: obj.id });
   },
-  completeText: async ({
-    self,
-    args: { max_tokens = 1500, temperature = 0.2, ...rest },
-  }) => {
+  completeText: async (
+    { max_tokens = 1500, temperature = 0.2, ...rest },
+    { self }
+  ) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "completions", {
       model: id,
@@ -159,10 +159,10 @@ export const Model = {
       throw new Error("Failed to get completion.");
     }
   },
-  completeChat: async ({
-    self,
-    args: { max_tokens = 2000, temperature = 0, messages, functions, ...rest },
-  }) => {
+  completeChat: async (
+    { max_tokens = 2000, temperature = 0, messages, functions, ...rest },
+    { self }
+  ) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "chat/completions", {
       model: id,
@@ -181,7 +181,7 @@ export const Model = {
       throw new Error(e);
     }
   },
-  edit: async ({ self, args: { temperature = 0.9, ...rest } }) => {
+  edit: async ({ temperature = 0.9, ...rest }, { self }) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "edits", { model: id, ...rest });
     try {
@@ -194,7 +194,7 @@ export const Model = {
       throw new Error("Failed to get edit.");
     }
   },
-  createEmbeddings: async ({ self, args: { input, inputs, user } }) => {
+  createEmbeddings: async ({ input, inputs, user }, { self }) => {
     const { id } = self.$argsAt(root.models.one);
     try {
       if (input && inputs) {
