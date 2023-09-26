@@ -653,7 +653,7 @@
         "actions": [
           {
             "name": "testGetModels",
-            "type": "Void"
+            "type": "Boolean"
           }
         ]
       }
