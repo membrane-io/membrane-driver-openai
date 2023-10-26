@@ -10,6 +10,7 @@ export const Root = {
     }
   },
   configure({ token }) {
+    root.statusChanged.$emit();
     return (state.token = token);
   },
   models() {
