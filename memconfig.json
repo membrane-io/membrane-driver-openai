@@ -27,10 +27,6 @@
           {
             "name": "files",
             "type": "FilesCollection"
-          },
-          {
-            "name": "tests",
-            "type": "Tests"
           }
         ],
         "actions": [
@@ -318,7 +314,7 @@
                 "type": "Json"
               },
               {
-                "name": "functions",
+                "name": "tools",
                 "type": "Json",
                 "optional": true
               },
@@ -649,13 +645,7 @@
         ]
       },
       {
-        "name": "Tests",
-        "actions": [
-          {
-            "name": "testGetModels",
-            "type": "Boolean"
-          }
-        ]
+        "name": "Tests"
       }
     ]
   }

@@ -160,13 +160,13 @@ export const Model = {
     }
   },
   completeChat: async (
-    { max_tokens = 2000, temperature = 0, messages, functions, ...rest },
+    { max_tokens = 2000, temperature = 0.2, messages, tools, ...rest },
     { self }
   ) => {
     const { id } = self.$argsAt(root.models.one);
     let res = await api("POST", "chat/completions", {
       model: id,
-      functions,
+      tools,
       messages,
       max_tokens,
       temperature,
