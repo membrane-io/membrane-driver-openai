@@ -14,19 +14,28 @@
         "fields": [
           {
             "name": "status",
-            "type": "String"
+            "type": "String",
+            "description": "Status of the OpenAI integration"
           },
           {
             "name": "models",
-            "type": "ModelsCollection"
+            "type": "ModelsCollection",
+            "description": "Collection of OpenAI models"
           },
           {
             "name": "fineTunes",
-            "type": "FineTunesCollection"
+            "type": "FineTunesCollection",
+            "description": "Collection of OpenAI fine-tunes"
           },
           {
             "name": "files",
-            "type": "FilesCollection"
+            "type": "FilesCollection",
+            "description": "Collection of OpenAI files"
+          },
+          {
+            "name": "tests",
+            "type": "Tests",
+            "description": "Collection of OpenAI tests"
           }
         ],
         "actions": [
@@ -38,7 +47,8 @@
                 "name": "token",
                 "type": "String"
               }
-            ]
+            ],
+            "description": "Configure the OpenAI integration with a token"
           },
           {
             "name": "generateImage",
@@ -60,7 +70,8 @@
                 "type": "String",
                 "optional": false
               }
-            ]
+            ],
+            "description": "Generate an image using OpenAI's language model"
           },
           {
             "name": "moderate",
@@ -76,7 +87,15 @@
                 "type": "Boolean",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Moderate content using OpenAI's moderation model"
+          }
+        ],
+        "events": [
+          {
+            "name": "statusChanged",
+            "type": "Void",
+            "description": "Triggered when the status of the OpenAI integration changes"
           }
         ]
       },
@@ -91,14 +110,17 @@
                 "name": "id",
                 "type": "String"
               }
-            ]
+            ],
+            "description": "Single OpenAI model"
           },
           {
             "name": "page",
             "type": "List",
-            "ofType": "Model"
+            "ofType": "Model",
+            "description": "List of OpenAI models"
           }
-        ]
+        ],
+        "description": "Collection of OpenAI models"
       },
       {
         "name": "FineTunesCollection",
@@ -111,12 +133,14 @@
                 "name": "id",
                 "type": "String"
               }
-            ]
+            ],
+            "description": "Single FineTune item"
           },
           {
             "name": "items",
             "type": "List",
-            "ofType": "FineTune"
+            "ofType": "FineTune",
+            "description": "List of FineTune items"
           }
         ],
         "actions": [
@@ -180,27 +204,32 @@
                 "type": "String",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Create a new FineTune"
           }
-        ]
+        ],
+        "description": "Collection of FineTunes"
       },
       {
         "name": "Model",
         "fields": [
           {
             "name": "id",
-            "type": "String"
+            "type": "String",
+            "description": "The ID of the model"
           },
           {
             "name": "object",
-            "type": "String"
+            "type": "String",
+            "description": "The type of the model"
           },
           {
             "name": "owned_by",
             "type": "String",
             "hints": {
               "primary": true
-            }
+            },
+            "description": "The owner of the model"
           }
         ],
         "actions": [
@@ -283,7 +312,8 @@
                 "type": "String",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Generate text based on a prompt"
           },
           {
             "name": "edit",
@@ -303,7 +333,8 @@
                 "type": "Float",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Edit the text based on the input and instruction"
           },
           {
             "name": "completeChat",
@@ -368,7 +399,8 @@
                 "type": "String",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Generate a chat response based on messages and functions"
           },
           {
             "name": "createEmbeddings",
@@ -389,184 +421,227 @@
                 "type": "String",
                 "optional": true
               }
-            ]
+            ],
+            "description": "Create text embeddings for the input"
           }
-        ]
+        ],
+        "description": "Collection of OpenAI models"
       },
       {
         "name": "Image",
         "fields": [
           {
             "name": "url",
-            "type": "String"
+            "type": "String",
+            "description": "The URL of the image"
           }
-        ]
+        ],
+        "description": "Root type for handling image-related functionality"
       },
       {
         "name": "Moderation",
         "fields": [
           {
             "name": "violence_graphic",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Indicates the presence of graphic violence in the content"
           },
           {
             "name": "violence",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Indicates the presence of violence in the content"
           },
           {
             "name": "sexual_minors",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Indicates the presence of sexual content involving minors"
           },
           {
             "name": "sexual",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Indicates the presence of sexual content"
           },
           {
             "name": "self_harm",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Indicates the presence of self-harm content"
           },
           {
             "name": "hate_threatening",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Indicates the presence of hate speech or threatening content"
           },
           {
             "name": "hate",
-            "type": "Boolean"
+            "type": "Boolean",
+            "description": "Indicates the presence of hate speech"
           },
           {
             "name": "violence_graphic_score",
-            "type": "Float"
+            "type": "Float",
+            "description": "Score indicating the severity of graphic violence in the content"
           },
           {
             "name": "violence_score",
-            "type": "Float"
+            "type": "Float",
+            "description": "Score indicating the severity of violence in the content"
           },
           {
             "name": "sexual_minors_score",
-            "type": "Float"
+            "type": "Float",
+            "description": "Score indicating the severity of sexual content involving minors"
           },
           {
             "name": "sexual_score",
-            "type": "Float"
+            "type": "Float",
+            "description": "Score indicating the severity of sexual content"
           },
           {
             "name": "self_harm_score",
-            "type": "Float"
+            "type": "Float",
+            "description": "Score indicating the severity of self-harm content"
           },
           {
             "name": "hate_threatening_score",
-            "type": "Float"
+            "type": "Float",
+            "description": "Score indicating the severity of hate speech or threatening content"
           },
           {
             "name": "hate_score",
-            "type": "Float"
+            "type": "Float",
+            "description": "Score indicating the severity of hate speech"
           }
-        ]
+        ],
+        "description": "Type schema for content moderation"
       },
       {
         "name": "FineTune",
         "fields": [
           {
             "name": "id",
-            "type": "String"
+            "type": "String",
+            "description": "The unique identifier for the fine-tuning process."
           },
           {
             "name": "object",
-            "type": "String"
+            "type": "String",
+            "description": "The type of object being fine-tuned."
           },
           {
             "name": "model",
             "type": "String",
             "hints": {
               "primary": true
-            }
+            },
+            "description": "The base model being fine-tuned."
           },
           {
             "name": "hyperparams",
-            "type": "Hyperparams"
+            "type": "Hyperparams",
+            "description": "The hyperparameters used for fine-tuning."
           },
           {
             "name": "fine_tuned_model",
-            "type": "String"
+            "type": "String",
+            "description": "The resulting fine-tuned model."
           },
           {
             "name": "organization_id",
-            "type": "String"
+            "type": "String",
+            "description": "The ID of the organization performing the fine-tuning."
           },
           {
             "name": "status",
-            "type": "String"
+            "type": "String",
+            "description": "The status of the fine-tuning process."
           },
           {
             "name": "created_at",
-            "type": "Int"
+            "type": "Int",
+            "description": "The timestamp when the fine-tuning process was created."
           },
           {
             "name": "updated_at",
-            "type": "Int"
+            "type": "Int",
+            "description": "The timestamp when the fine-tuning process was last updated."
           },
           {
             "name": "events",
-            "type": "Events"
+            "type": "Events",
+            "description": "The events associated with the fine-tuning process."
           },
           {
             "name": "result_files",
             "type": "List",
-            "ofType": "File"
+            "ofType": "File",
+            "description": "The files resulting from the fine-tuning process."
           },
           {
             "name": "training_files",
             "type": "List",
-            "ofType": "File"
+            "ofType": "File",
+            "description": "The files used for training the model."
           },
           {
             "name": "validation_files",
             "type": "List",
-            "ofType": "File"
+            "ofType": "File",
+            "description": "The files used for validating the fine-tuned model."
           }
-        ]
+        ],
+        "description": "Type representing the fine-tuning process for an AI model."
       },
       {
         "name": "Hyperparams",
         "fields": [
           {
             "name": "batch_size",
-            "type": "Int"
+            "type": "Int",
+            "description": "The batch size hyperparameter"
           },
           {
             "name": "learning_rate_multiplier",
-            "type": "Float"
+            "type": "Float",
+            "description": "The learning rate multiplier hyperparameter"
           },
           {
             "name": "n_epochs",
-            "type": "Int"
+            "type": "Int",
+            "description": "The number of epochs hyperparameter"
           },
           {
             "name": "prompt_loss_weight",
-            "type": "Float"
+            "type": "Float",
+            "description": "The prompt loss weight hyperparameter"
           }
-        ]
+        ],
+        "description": "Collection of hyperparameters for the membrane-driver-openai program"
       },
       {
         "name": "Events",
         "fields": [
           {
             "name": "object",
-            "type": "String"
+            "type": "String",
+            "description": "The object associated with the event"
           },
           {
             "name": "created_at",
-            "type": "Int"
+            "type": "Int",
+            "description": "The timestamp when the event was created"
           },
           {
             "name": "level",
-            "type": "String"
+            "type": "String",
+            "description": "The level of the event"
           },
           {
             "name": "message",
-            "type": "String"
+            "type": "String",
+            "description": "The message associated with the event"
           }
-        ]
+        ],
+        "description": "Collection of event data related to the OpenAI membrane driver"
       },
       {
         "name": "FilesCollection",
@@ -579,12 +654,14 @@
                 "name": "id",
                 "type": "String"
               }
-            ]
+            ],
+            "description": "File with the specified ID"
           },
           {
             "name": "items",
             "type": "List",
-            "ofType": "File"
+            "ofType": "File",
+            "description": "List of files"
           }
         ],
         "actions": [
@@ -594,58 +671,78 @@
             "params": [
               {
                 "name": "name",
-                "type": "String"
+                "type": "String",
+                "description": "The name of the file to be uploaded"
               },
               {
                 "name": "contents",
-                "type": "String"
+                "type": "String",
+                "description": "The contents of the file to be uploaded"
               },
               {
                 "name": "purpose",
                 "type": "String",
-                "optional": true
+                "optional": true,
+                "description": "The purpose of the file upload (optional)"
               }
-            ]
+            ],
+            "description": "Uploads a file with the specified name and contents"
           }
-        ]
+        ],
+        "description": "Collection of files for the Membrane OpenAI driver"
       },
       {
         "name": "File",
         "fields": [
           {
             "name": "id",
-            "type": "String"
+            "type": "String",
+            "description": "Unique identifier of the file"
           },
           {
             "name": "object",
-            "type": "String"
+            "type": "String",
+            "description": "The object representation of the file"
           },
           {
             "name": "bytes",
-            "type": "Int"
+            "type": "Int",
+            "description": "The size of the file in bytes"
           },
           {
             "name": "created_at",
             "hints": {
               "primary": true
             },
-            "type": "String"
+            "type": "String",
+            "description": "The timestamp when the file was created"
           },
           {
             "name": "filename",
             "hints": {
               "primary": true
             },
-            "type": "String"
+            "type": "String",
+            "description": "The name of the file"
           },
           {
             "name": "purpose",
-            "type": "String"
+            "type": "String",
+            "description": "The purpose or use case of the file"
           }
-        ]
+        ],
+        "description": "Type representing a file in the OpenAI Membrane Driver"
       },
       {
-        "name": "Tests"
+        "name": "Tests",
+        "actions": [
+          {
+            "name": "testGetModels",
+            "type": "Boolean",
+            "description": "Action to test fetching models from OpenAI"
+          }
+        ],
+        "description": "Root type for the Membrane OpenAI driver"
       }
     ]
   }
